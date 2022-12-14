@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client_layout');
 });
 
 Route::get('/product', function () {
@@ -32,3 +33,10 @@ Route::delete('/users' . '/{id}', [UserController::class, 'destroy'])->name('use
 Route::patch('/users' . '/{id}', [UserController::class, 'update'])->name('users.update');
 Route::put('/users' . '/{id}', [UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::delete('/posts' . '/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::patch('/posts' . '/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::put('/posts' . '/{id}', [PostController::class, 'edit'])->name('posts.edit');
+Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
