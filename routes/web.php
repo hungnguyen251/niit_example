@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,10 @@ Route::get('/product', function () {
 Route::get('/home', function () {
     return view('niit.homepage');
 })->name('niit.homepage');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::delete('/users' . '/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::patch('/users' . '/{id}', [UserController::class, 'update'])->name('users.update');
+Route::put('/users' . '/{id}', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
