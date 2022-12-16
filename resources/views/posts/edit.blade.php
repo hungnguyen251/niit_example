@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'posts')
+@section('title', 'Posts')
 
 @section('content')
 <div class="wrapper">
@@ -39,8 +39,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputEmail">Nội dung </label>
+                                    <label for="inputContent">Nội dung </label>
                                     <input type="text" class="form-control" value="{{ $post->content }}" name="content"  placeholder="Nhập vào nội dung bài đăng">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputCategoryId">Tên thể loại </label>
+                                    <input type="text" class="form-control" value="{{ $post->category_id }}" name="category_id"  placeholder="Nhập vào nội dung bài đăng">
                                 </div>
 
                                 <input type="hidden" class="form-control" value="{{ date('Y-m-d H:i:s') }}" name="updated_at"  placeholder="">

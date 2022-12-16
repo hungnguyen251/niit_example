@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'posts')
+@section('title', 'Posts')
 
 @section('content')
 <div class="wrapper">
@@ -47,6 +47,12 @@
                                     <label for="inputPassword">ID người dùng </label>
                                     <input type="text" class="form-control" value="{{old('password')}}" name="user_id"  placeholder="Nhập ID ngươi dùng">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="inputCategoryId">Tên thể loại </label>
+                                    <input type="text" class="form-control" value="{{ old('category_id') }}" name="category_id"  placeholder="Nhập vào nội dung bài đăng">
+                                </div>
+
                                 <input type="hidden" class="form-control" value="{{ date('Y-m-d H:i:s') }}" name="updated_at"  placeholder="">
                                 <input type="hidden" class="form-control" value="{{ date('Y-m-d H:i:s') }}" name="created_at"  placeholder="">
                             </div>

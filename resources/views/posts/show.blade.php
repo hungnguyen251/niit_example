@@ -46,6 +46,7 @@
                                   <th width="5%">ID</th>
                                   <th width="10%">Tiêu đề</th>
                                   <th>Nội dung</th>
+                                  <th>Tên thể loại</th>
                                   <th>Ngày tạo</th>
                                   <th>Thao tác</th>
                               </tr>
@@ -54,10 +55,11 @@
                           <tbody>
                               @foreach ($posts as $item)
                               <tr>
-                                  <td>{{$item->id}}</td>
-                                  <td>{{$item->title}}</td>
-                                  <td>{{$item->content}}</td>
-                                  <td>{{$item->created_at}}</td>
+                                  <td>{{ $item->id }}</td>
+                                  <td>{{ $item->title }}</td>
+                                  <td>{{ $item->content }}</td>
+                                  <td>{{  isset($item->category_id->name) ? $item->category_id->name : $item->category_id }}</td>
+                                  <td>{{ $item->created_at }}</td>
                                   <td>
                                     <div class="btn-group">
                                         <form action="{{ url('/posts', ['id' => $item->id]) }}" method="POST">

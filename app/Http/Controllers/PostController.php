@@ -17,8 +17,17 @@ class PostController extends Controller
     {
         $posts = DB::table('posts')->get();
 
+        //Handle category name
+        if (count($posts) > 0) {
+
+            for ($i = 0; $i < count($posts); $i++) {
+                $categoryName = DB::table('categories')->select('name')->where('id', $posts[$i]->id)->first();
+                $posts[$i]->category_id = $categoryName;
+            }
+        }
+
         // return $posts;
-        return view('posts.show', ['posts' => $posts]);
+        return view('posts.show', compact('posts'));
     }
 
     /**
@@ -105,7 +114,7 @@ class PostController extends Controller
     {
         $post = DB::table('posts')->where('id', $id)->first();
 
-        return view('posts.edit', ['post' => $post]);
+        return view('posts.edit', compact('post'));
     }
 
     /**
