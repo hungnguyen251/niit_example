@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,10 @@ Route::delete('/posts' . '/{id}', [PostController::class, 'destroy'])->name('pos
 Route::patch('/posts' . '/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::put('/posts' . '/{id}', [PostController::class, 'edit'])->name('posts.edit');
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::delete('/categories' . '/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::patch('/categories' . '/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::put('/categories' . '/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');

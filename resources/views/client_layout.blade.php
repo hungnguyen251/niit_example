@@ -202,11 +202,22 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ url('posts') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Post
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url('categories') }}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Category
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
