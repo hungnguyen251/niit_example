@@ -114,8 +114,9 @@ class CategoryController extends Controller
     public function edit(int $id)
     {
         $category = $this->categories->where('id', $id)->first();
+        $parentId = $this->categories->select('parent_id')->distinct()->get();
 
-        return view('categories.edit', compact('category'));
+        return view('categories.edit', compact(['category', 'parentId']));
     }
 
     /**
@@ -126,6 +127,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $parentId = $this->categories->select('parent_id')->distinct()->get();
+        return view('categories.create', compact('parentId'));
     }
 }

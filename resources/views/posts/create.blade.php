@@ -50,7 +50,11 @@
 
                                 <div class="form-group">
                                     <label for="inputCategoryId">Tên thể loại </label>
-                                    <input type="text" class="form-control" value="{{ old('category_id') }}" name="category_id"  placeholder="Nhập vào nội dung bài đăng">
+                                    <select class="form-control" name="category_id">
+                                        @foreach ($categories as $category)
+                                            <option>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <input type="hidden" class="form-control" value="{{ date('Y-m-d H:i:s') }}" name="updated_at"  placeholder="">

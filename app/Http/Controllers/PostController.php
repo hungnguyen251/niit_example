@@ -74,6 +74,9 @@ class PostController extends Controller
     public function update(Request $request, int $id)
     {
         try {
+            $categoryId = DB::table('categories')->select('id')->where('name', $request->category_id)->first();
+            $request->merge(['category_id' => $categoryId->id]);
+
             DB::table('posts')->where('id', $id)->update($request->except(['_token','_method','submit']));
 
             return redirect()->route('posts.index')->with('success', 'Cập nhật bài đăng thành công'); 
@@ -113,8 +116,9 @@ class PostController extends Controller
     public function edit(int $id)
     {
         $post = DB::table('posts')->where('id', $id)->first();
+        $categories = DB::table('categories')->select('id','name')->get();
 
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact(['post', 'categories']));
     }
 
     /**
@@ -125,6 +129,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = DB::table('categories')->select('id','name')->get();
+
+        return view('posts.create', compact('categories'));
     }
 }

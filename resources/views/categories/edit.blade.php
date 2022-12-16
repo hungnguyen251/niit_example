@@ -41,9 +41,9 @@
                                 <div class="form-group">
                                     <label for="inputParentId">Danh mục cha </label>
                                     <select class="form-control" name="parent_id">
-                                      <option {{ $category->parent_id == '1' ? 'selected' : ''}}>1</option>
-                                      <option {{ $category->parent_id == '2' ? 'selected' : ''}}>2</option>
-                                      <option {{ $category->parent_id == '3' ? 'selected' : ''}}>3</option>
+                                        @foreach ($parentId as $items)
+                                            <option {{ $category->parent_id == $items->parent_id ? 'selected' : ''}}>{{ $items->parent_id }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

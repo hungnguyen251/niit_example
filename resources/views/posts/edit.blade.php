@@ -43,11 +43,16 @@
                                     <input type="text" class="form-control" value="{{ $post->content }}" name="content"  placeholder="Nhập vào nội dung bài đăng">
                                 </div>
 
+
                                 <div class="form-group">
                                     <label for="inputCategoryId">Tên thể loại </label>
-                                    <input type="text" class="form-control" value="{{ $post->category_id }}" name="category_id"  placeholder="Nhập vào nội dung bài đăng">
+                                    <select class="form-control" name="category_id">
+                                        @foreach ($categories as $category)
+                                            <option {{ $category->id == $post->category_id ? 'selected' : ''}}>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-
+                                
                                 <input type="hidden" class="form-control" value="{{ date('Y-m-d H:i:s') }}" name="updated_at"  placeholder="">
                             </div>
 
